@@ -27,7 +27,11 @@ def bug_list(project_name, bug_type, milestone_name):
 @app.route('/project/<project_name>')
 def project_overview(project_name):
     project = lpdata.get_project(project_name)
-    return flask.render_template("project.html", project=project, selected_overview=True)
+    available_projects = settings.AVAILABLE_PROJECTS
+    return flask.render_template("project.html",
+                                 project=project,
+                                 available_projects = available_projects,
+                                 selected_overview=True)
 
 @app.route('/project/<project_name>/bug_trends/<milestone_name>')
 def bug_trends(project_name, milestone_name):
