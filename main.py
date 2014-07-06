@@ -3,6 +3,8 @@ import requests, json, flask
 from launchpad.release_chart import ReleaseChart
 from launchpad.lpdata import LaunchpadData
 
+import settings
+
 #httplib2.debuglevel = 1
 
 app = flask.Flask(__name__)
@@ -44,7 +46,7 @@ def bug_report_get_incoming_outgoing_data(project_name, milestone_name):
 
 @app.route('/')
 def main_page():
-    return flask.redirect(flask.url_for("project_overview", project_name="fuel"))
+    return flask.redirect(flask.url_for("project_overview", project_name=settings.PROJECT_NAME))
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", port = 4444, threaded = True, debug = True)

@@ -6,4 +6,6 @@
 
 # Python virtual env
 env
+.venv
 
+settings_local.py
